@@ -161,13 +161,9 @@ Prevention of double booking
 
 📌 Limitations
 
-Runs locally (not deployed)
-
 No real payment gateway integration
 
 No email notifications
-
-Basic analytics dashboard
 
 🔮 Future Improvements
 
@@ -175,12 +171,10 @@ Payment gateway integration
 
 Email & SMS notifications
 
-Cloud deployment
-
 Doctor availability scheduling
 
 Advanced analytics
 
-👨‍💻 Developed By
+
 
 
