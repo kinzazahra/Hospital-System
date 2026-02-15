@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-2 mb-2">
+    <div class="card max-w-600 mx-auto">
+        <h2 class="text-center mb-1">Book an Appointment</h2>
+        <form action="/book" method="POST">
+            
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Time</label>
+                <select name="time" required>
+                    <option value="">Select Time</option>
+                    <option>09:00 AM</option>
+                    <option>10:00 AM</option>
+                    <option>11:00 AM</option>
+                    <option>02:00 PM</option>
+                    <option>03:00 PM</option>
+                    <option>04:00 PM</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Describe Your Symptoms</label>
+                <textarea name="symptoms" placeholder="e.g. Headache, Fever, Chest Pain" required></textarea>
+                <small class="text-sm color-secondary">We will automatically assign the best specialist for you.</small>
+            </div>
+
+            <hr class="my-1">
+            <p class="text-center mb-1">OR Select Manually</p>
+
+            <div class="form-group">
+                <label>Select Doctor (Optional)</label>
+                <select name="doctor_id">
+                    <option value="">-- Let System Assign --</option>
+                    {% for doc in doctors %}
+                    <option value="{{ doc.id }}">{{ doc.name }} ({{ doc.specialization }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="bg-light p-1 mb-1 border-radius">
+                <p><strong>Consultation Fee:</strong> ₹500.00</p>
+                <p class="text-sm"><i class="fas fa-lock"></i> Secure Payment Simulation</p>
+            </div>
+
+            <button class="btn btn-block">Confirm & Pay</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

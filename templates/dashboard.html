@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-2 mb-2">
+    <div class="flex-between mb-1">
+        <h2>Welcome, {{ session.name }}</h2>
+        <a href="/book" class="btn"><i class="fas fa-plus"></i> New Appointment</a>
+    </div>
+
+    <div class="grid-3 mb-2">
+        <div class="card text-center border-left-primary">
+            <h3>{{ appointments|length }}</h3>
+            <p>Total Appointments</p>
+        </div>
+        <div class="card text-center border-left-warning">
+             <h3>{{ appointments|selectattr('status', 'equalto', 'Pending')|list|length }}</h3>
+            <p>Pending Approval</p>
+        </div>
+        <div class="card text-center border-left-success">
+             <h3>{{ appointments|selectattr('status', 'equalto', 'Approved')|list|length }}</h3>
+            <p>Confirmed</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Appointment History</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date & Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appt in appointments %}
+                    <tr>
+                        <td>
+                            <strong>{{ appt.doctor.name }}</strong><br>
+                            <small>{{ appt.doctor.specialization }}</small>
+                        </td>
+                        <td>{{ appt.date }} <br> {{ appt.time }}</td>
+                        <td>
+                            <span class="badge badge-{{ appt.status.lower() }}">{{ appt.status }}</span>
+                        </td>
+                        <td>
+                            <a href="/receipt/{{ appt.id }}" >Receipt</a>
+                            {% if appt.status == 'Pending' %}
+                            <a href="/cancel/{{ appt.id }}" class="btn btn-sm btn-danger" onclick="return confirm('Cancel this appointment?')">Cancel</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

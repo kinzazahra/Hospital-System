@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-2 mb-2">
+    <div class="card max-w-600 mx-auto">
+        <div class="text-center mb-1">
+            <h2 style="color: var(--primary);">Create Account</h2>
+            <p style="color: var(--secondary);">Join City Hospital for digital health records</p>
+        </div>
+
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="john@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone" placeholder="+1 234 567 8900" required>
+            </div>
+
+            <div class="form-group">
+                <label>Create Password</label>
+                <input type="password" name="password" placeholder="Min. 6 characters" required>
+            </div>
+
+            <button class="btn btn-block mt-1">Register</button>
+        </form>
+
+        <div class="text-center mt-1">
+            <p>Already have an account? <a href="/login" style="color: var(--primary); font-weight: 600;">Login here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

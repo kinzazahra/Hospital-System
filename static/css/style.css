@@ -1,0 +1,185 @@
+/* ================= VARIABLES & RESET ================= */
+:root {
+    --primary: #4e73df;
+    --secondary: #858796;
+    --success: #1cc88a;
+    --danger: #e74a3b;
+    --warning: #f6c23e;
+    --light: #f8f9fc;
+    --dark: #5a5c69;
+    --white: #ffffff;
+    --shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+/* ================= BODY & LAYOUT ================= */
+body { 
+    background: var(--light); 
+    color: var(--dark); 
+    line-height: 1.6;
+    
+    /* Spacing for Fixed Elements */
+    padding-top: 80px;      /* Pushes content down so Header doesn't hide it */
+    padding-bottom: 60px;   /* Pushes content up so Copyright Bar doesn't hide it */
+    min-height: 100vh;
+}
+
+/* ================= UTILITIES ================= */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.card { background: var(--white); border-radius: 8px; padding: 1.5rem; box-shadow: var(--shadow); }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* Spacing Helpers */
+.mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; } .mb-2 { margin-bottom: 2rem; }
+
+/* Grid Layouts */
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* ================= NAVBAR (FIXED TOP) ================= */
+.navbar { 
+    background: var(--white); 
+    padding: 1rem 0; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    
+    /* Fixed Positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.brand { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { font-weight: 500; color: var(--dark); transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+/* ================= HERO SECTION (LOCAL IMAGE) ================= */
+.hero { 
+    /* 1. The blue overlay (0.75 opacity) makes text readable.
+       2. Points to your local image in static/images folder */
+    background: linear-gradient(rgba(78, 115, 223, 0.75), rgba(78, 115, 223, 0.75)), 
+                url('../images/hospital_bg.jpg'); 
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    color: var(--white);
+    padding: 8rem 0; 
+    text-align: center; 
+    position: relative;
+}
+.hero h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+.hero p { opacity: 0.9; font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto; }
+
+/* ================= BUTTONS ================= */
+.btn { display: inline-block; padding: 0.6rem 1.2rem; background: var(--primary); color: var(--white); border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+.btn:hover { background: #2e59d9; transform: translateY(-2px); }
+
+.btn-outline { background: transparent; border: 2px solid var(--white); color: var(--white); }
+.btn-outline:hover { background: var(--white); color: var(--primary); }
+
+.btn-sm { padding: 0.4rem 0.8rem; font-size: 0.9rem; }
+.btn-danger { background: var(--danger); }
+.btn-success { background: var(--success); }
+.btn-block { display: block; width: 100%; }
+
+/* ================= FORMS ================= */
+input, select, textarea { width: 100%; padding: 0.8rem; border: 1px solid #d1d3e2; border-radius: 5px; margin-top: 0.5rem; }
+.form-group { margin-bottom: 1rem; }
+
+/* ================= ALERTS (MESSAGE SENT NOTIFICATION) ================= */
+.alert { 
+    padding: 1rem; 
+    margin-bottom: 1rem; 
+    border-radius: 5px; 
+    border-left: 5px solid; 
+    font-weight: 500;
+}
+.alert-success { 
+    background-color: #d1fae5; 
+    color: #065f46; 
+    border-color: #10b981; 
+}
+.alert-error { 
+    background-color: #fee2e2; 
+    color: #991b1b; 
+    border-color: #ef4444; 
+}
+
+/* ================= TABLES & BADGES ================= */
+.table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.table th, .table td { padding: 1rem; border-bottom: 1px solid #e3e6f0; text-align: left; }
+
+.badge { padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem; color: white; display: inline-block; }
+.badge-pending { background: var(--warning); }
+.badge-approved { background: var(--success); }
+.badge-rejected { background: var(--danger); }
+
+/* ================= MAIN FOOTER (SCROLLABLE) ================= */
+.footer { 
+    background: #2c3e50; 
+    color: #ecf0f1; 
+    padding: 3rem 0; 
+    margin-top: 3rem;
+    position: relative; /* Scrolls naturally */
+    padding-bottom: 2rem; /* Spacing before the fixed bottom bar */
+}
+.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+/* ================= COPYRIGHT BAR (FIXED BOTTOM) ================= */
+.footer-bottom { 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    background: #233140; /* Slightly darker than main footer */
+    color: rgba(255, 255, 255, 0.7);
+    
+    padding: 15px 0; 
+    text-align: center; 
+    font-size: 0.85rem;
+    border-top: 1px solid #34495e;
+    z-index: 1001; /* Above everything else */
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4, .footer-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; } 
+    
+    /* On mobile, unfix the copyright bar to save screen space */
+    .footer-bottom { position: relative; }
+    body { padding-bottom: 0; }
+}
+
+@media print { .no-print, .navbar, .footer, .footer-bottom { display: none; } }
+
+.alert-success {
+    background-color: #d1fae5;
+    border-left: 4px solid #10b981;
+    color: #065f46;
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
+    color: #991b1b;
+}
+
+.alert-info {
+    background-color: #dbeafe;
+    border-left: 4px solid #2563eb;
+    color: #1e40af;
+}

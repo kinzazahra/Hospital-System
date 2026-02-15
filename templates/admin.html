@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-2 mb-2">
+    <div class="flex-between mb-1">
+        <h2>Admin Dashboard</h2>
+        <a href="/export"><i class="fas fa-file-csv"></i> Export CSV</a>
+    </div>
+
+    <div class="grid-4 mb-2">
+        <div class="card text-center"><h3>{{ stats.total_patients }}</h3><p>Patients</p></div>
+        <div class="card text-center"><h3>{{ stats.total_doctors }}</h3><p>Doctors</p></div>
+        <div class="card text-center"><h3>{{ stats.total_appts }}</h3><p>Appointments</p></div>
+        <div class="card text-center"><h3>₹{{ stats.revenue }}</h3><p>Revenue</p></div>
+    </div>
+
+    <div class="grid-2 mb-2">
+        <div class="card">
+            <h3>Appointment Status</h3>
+            <canvas id="statusChart"></canvas>
+        </div>
+        <div class="card">
+            <h3>Add New Doctor</h3>
+            <form action="/doctor/add" method="POST">
+                <input type="text" name="name" placeholder="Name" class="mb-1" style="width:100%" required>
+                <input type="text" name="spec" placeholder="Specialization" class="mb-1" style="width:100%" required>
+                <input type="number" name="exp" placeholder="Experience" class="mb-1" style="width:100%" required>
+                <button class="btn btn-block">Add Doctor</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mb-2">
+        <div class="flex-between">
+            <h3>Recent Appointments</h3>
+            <form action="/admin" method="GET" class="flex-gap">
+                <input type="date" name="date" class="p-05">
+                <button class="btn btn-sm">Filter</button>
+                <a href="/admin" class="btn btn-sm btn-outline">Reset</a>
+            </form>
+        </div>
+        <table class="table mt-1">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appt in appointments %}
+                <tr>
+                    <td>{{ appt.patient.name }}</td>
+                    <td>{{ appt.doctor.name }}</td>
+                    <td>{{ appt.date }} {{ appt.time }}</td>
+                    <td><span class="badge badge-{{ appt.status.lower() }}">{{ appt.status }}</span></td>
+                    <td>
+                        {% if appt.status == 'Pending' %}
+                        <a href="/appointment/approve/{{ appt.id }}" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
+                        <a href="/appointment/reject/{{ appt.id }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+const ctx = document.getElementById('statusChart').getContext('2d');
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Pending', 'Approved', 'Rejected'],
+        datasets: [{
+            data: [{{ status_counts.Pending }}, {{ status_counts.Approved }}, {{ status_counts.Rejected }}],
+            backgroundColor: ['#f6c23e', '#1cc88a', '#e74a3b']
+        }]
+    }
+});
+</script>
+{% endblock %}
