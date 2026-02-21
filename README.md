@@ -1,180 +1,77 @@
-🏥 Hospital Appointment Management System
+**City Hospital Appointment Management System**
+A full-stack web application built using Flask and SQLite that allows patients to book hospital appointments and administrators to manage doctors, appointments, and revenue.
 
-A full-stack web application built using Flask (Python) and SQLite that allows patients to book hospital appointments and administrators to manage doctors, appointments, and revenue.
+**🚀 Feature**
+**Patient Module**
+Registration & Login: Secure user authentication with password hashing.
 
-This project was developed as part of an internship to demonstrate practical full-stack development and database integration.
+Book Appointment: Choose between Online or Offline consultation modes.
 
-🚀 Features
-👤 Patient
+Auto-Assign Doctor: Smart system that assigns a specialist based on symptoms like Fever, Headache, or Chest Pain.
 
-Register & Login
+Manual Selection: Option to manually select a preferred doctor from the list.
 
-Book Appointment (Online / Offline)
+Double Booking Prevention: Logic to ensure time slots are not overbooked.
 
-Auto-assign doctor based on symptoms
+Appointment History: View past and upcoming appointments with their current status.
 
-Manual doctor selection
+Download Receipt: Generate and print digital invoices for appointments.
 
-Prevent double booking
+**Admin Module**
+Secure Dashboard: View statistics including total patients, total doctors, and total appointments.
 
-View appointment history
+Doctor Management: Add new specialists or delete existing ones from the database.
 
-Cancel appointment
+Appointment Approval: Review pending requests to approve or reject them.
 
-Download appointment receipt
+Revenue Calculation: Automated tracking of hospital earnings based on approved appointments.
 
-🛠 Admin
+Data Export: Export all appointment data to a CSV file for reporting.
 
-Secure admin login
+**🛠 Tech Stack**
+Frontend: HTML, CSS, JavaScript.
 
-Add/Delete doctors
+Backend: Python (Flask Framework).
 
-Approve / Reject appointments
+Database: SQLite with SQLAlchemy ORM.
 
-View dashboard statistics
+Security: Werkzeug for password hashing and session-based authentication.
 
-Revenue calculation
-
-Export appointments as CSV
-
-📩 Contact System
-
-Patients can send messages
-
-Messages stored in database
-
-Flash notifications for confirmation
-
-🧠 Smart Features
-
-Automatic doctor assignment for:
-
-Fever
-
-Headache
-
-Chest pain
-→ Assigned to General Physician
-
-Google Meet link generation for online consultation
-
-Role-based authentication
-
-Secure password hashing
-
-Session management
-
-🛠 Tech Stack
-
-Frontend
-
-HTML
-
-CSS
-
-JavaScript
-
-Backend
-
-Python (Flask)
-
-Database
-
-SQLite
-
-ORM
-
-SQLAlchemy
-
-Security
-
-Werkzeug (Password Hashing)
-
-🗂 Project Structure
+**📂 Project Structure**
 Hospital-System/
 │
-├── app.py
-├── models.py
-├── hospital.db
-├── requirements.txt
+├── app.py              # Application routes and backend logic
+├── models.py           # Database models (User, Doctor, Appointment)
+├── hospital.db         # SQLite database file
+├── requirements.txt    # Python dependencies
 │
-├── templates/
+├── templates/          # HTML templates (Jinja2)
 │   ├── index.html
 │   ├── login.html
-│   ├── register.html
 │   ├── dashboard.html
-│   ├── booking.html
-│   ├── admin.html
-│   ├── receipt.html
+│   └── receipt.html
 │
-├── static/
-│   ├── css/
-│   └── js/
+└── static/             # Static assets
+    ├── css/style.css
+    └── images/
+    
+**⚙️ Installation & Setup**
+Clone the Repository
 
-⚙️ Installation & Setup
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone <your-repo-url>
+cd Hospital-System
+Install Dependencies
 
-2️⃣ Install Dependencies
 pip install -r requirements.txt
+Run the Application
 
-3️⃣ Run the Application
 python app.py
+Access the system at http://127.0.0.1:5000.
 
+**🔑 Default Credentials**
+Admin Email: admin@hospital.com
 
-Open browser:
+Admin Password: admin123
 
-http://127.0.0.1:5000
-
-🔑 Default Admin Credentials
-
-Email:
-
-admin@hospital.com
-
-
-Password:
-
-admin123
-
-💰 Revenue Logic
-
-Revenue is calculated as:
-
-Approved Appointments × Consultation Fee
-
-
-(Current consultation fee: ₹500)
-
-🛡 Security Implemented
-
-Password hashing
-
-Role-based route protection
-
-Session-based login
-
-Validation for past date booking
-
-Prevention of double booking
-
-📌 Limitations
-
-No real payment gateway integration
-
-No email notifications
-
-🔮 Future Improvements
-
-Payment gateway integration
-
-Email & SMS notifications
-
-Doctor availability scheduling
-
-Advanced analytics
-
-
-
-
+**💰 Revenue Logic**
+Revenue is calculated as: Approved Appointments × Consultation Fee (Fixed at ₹500).
