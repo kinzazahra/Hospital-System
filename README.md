@@ -1,77 +1,91 @@
-**City Hospital Appointment Management System**
-A full-stack web application built using Flask and SQLite that allows patients to book hospital appointments and administrators to manage doctors, appointments, and revenue.
+City Hospital – Appointment Management System
+A professional, full-stack web application designed to automate hospital appointment scheduling, doctor management, and revenue tracking. This system replaces manual record-keeping with a streamlined digital workflow for both patients and healthcare administrators.
 
-**🚀 Feature**
-**Patient Module**
-Registration & Login: Secure user authentication with password hashing.
+Built with efficiency by Kinza Zahra 🏥
 
-Book Appointment: Choose between Online or Offline consultation modes.
+Features
+👤 Patient Portal
+Secure Authentication: Register and login with session-based security and password hashing.
 
-Auto-Assign Doctor: Smart system that assigns a specialist based on symptoms like Fever, Headache, or Chest Pain.
+Smart Appointment Booking:
 
-Manual Selection: Option to manually select a preferred doctor from the list.
+Auto-assign Doctor: Input symptoms (e.g., Fever, Headache, Chest Pain) and the system automatically assigns the correct specialist (e.g., General Physician).
 
-Double Booking Prevention: Logic to ensure time slots are not overbooked.
+Manual Selection: Browse the specialist list and choose your own doctor.
 
-Appointment History: View past and upcoming appointments with their current status.
+Online/Offline Modes: Choose between in-person visits or online consultations with auto-generated Google Meet links.
 
-Download Receipt: Generate and print digital invoices for appointments.
+No Double Booking: Real-time validation prevents two patients from booking the same doctor at the same time.
 
-**Admin Module**
-Secure Dashboard: View statistics including total patients, total doctors, and total appointments.
+Appointment Management: View your history, track status (Pending/Approved/Rejected), or cancel upcoming visits.
 
-Doctor Management: Add new specialists or delete existing ones from the database.
+Digital Receipts: Download and print professional invoices for your records.
 
-Appointment Approval: Review pending requests to approve or reject them.
+🛠 Admin Dashboard
+Live Analytics: Monitor total patients, doctors, and appointments through a visual dashboard with status charts.
 
-Revenue Calculation: Automated tracking of hospital earnings based on approved appointments.
+Doctor Directory: Add new specialists or remove existing ones to keep the hospital staff list updated.
 
-Data Export: Export all appointment data to a CSV file for reporting.
+Workflow Management: Approve or reject pending appointment requests with one click.
 
-**🛠 Tech Stack**
-Frontend: HTML, CSS, JavaScript.
+Revenue Tracking: Automatic calculation of hospital earnings based on approved appointments.
+
+Data Portability: Export all appointment records to a CSV file for offline reporting.
+
+💻 Tech Stack
+Frontend: HTML5, CSS3 (Custom styling with Poppins font), JavaScript.
 
 Backend: Python (Flask Framework).
 
 Database: SQLite with SQLAlchemy ORM.
 
-Security: Werkzeug for password hashing and session-based authentication.
+Security: Werkzeug (Password Hashing).
 
-**📂 Project Structure**
+📂 Project Structure
+Plaintext
 Hospital-System/
 │
-├── app.py              # Application routes and backend logic
-├── models.py           # Database models (User, Doctor, Appointment)
+├── app.py              # Application routes & core backend logic
+├── models.py           # Database schema (User, Doctor, Appointment)
 ├── hospital.db         # SQLite database file
 ├── requirements.txt    # Python dependencies
 │
-├── templates/          # HTML templates (Jinja2)
-│   ├── index.html
-│   ├── login.html
-│   ├── dashboard.html
-│   └── receipt.html
+├── static/             # Assets & Styling
+│   ├── css/style.css
+│   └── images/         # Local UI images
 │
-└── static/             # Static assets
-    ├── css/style.css
-    └── images/
-    
-**⚙️ Installation & Setup**
-Clone the Repository
+└── templates/          # Jinja2 HTML templates
+    ├── base.html       # Shared layout (Navbar & Footer)
+    ├── admin.html      # Admin dashboard
+    ├── booking.html    # Appointment form
+    └── receipt.html    # Invoice generator
+⚙️ How to Run Locally
+Clone the Repository:
 
-git clone <your-repo-url>
+Bash
+git clone <your-repository-url>
 cd Hospital-System
-Install Dependencies
+Install Dependencies:
 
+Bash
 pip install -r requirements.txt
-Run the Application
+Run the Application:
 
+Bash
 python app.py
-Access the system at http://127.0.0.1:5000.
+Access the App:
+Open your browser and go to http://127.0.0.1:5000.
 
-**🔑 Default Credentials**
-Admin Email: admin@hospital.com
+🔑 Credentials & Logic
+Default Admin: Email: admin@hospital.com | Password: admin123.
 
-Admin Password: admin123
+Pricing: All consultations are calculated at a fixed fee of ₹500.
 
-**💰 Revenue Logic**
-Revenue is calculated as: Approved Appointments × Consultation Fee (Fixed at ₹500).
+🔮 Future Improvements
+Integration with real online payment gateways.
+
+Email and SMS confirmation alerts.
+
+Advanced analytics dashboard for hospital performance.
+
+Made with ❤️ by Kinza Zahra
