@@ -43,3 +43,4 @@ class ContactMessage(db.Model):
     email = db.Column(db.String(120))
     message = db.Column(db.Text)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+
