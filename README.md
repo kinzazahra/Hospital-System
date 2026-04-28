@@ -93,5 +93,3 @@ Email and SMS notifications for bookings
 Advanced analytics and reporting dashboard
 
 Made with ❤️ by Kinza Zahra
-
-
