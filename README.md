@@ -128,5 +128,3 @@ http://127.0.0.1:5000
 ---
 
 ❤️ **Made with love by Kinza Zahra**
-
-
